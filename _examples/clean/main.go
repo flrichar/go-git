@@ -50,10 +50,9 @@ func main() {
 	// Clean all untracked files from the worktree.
 	Info("git clean -xfd")
 
-	cleanOpts := &git.CleanOptions{
+	err = w.Clean(&git.CleanOptions{
 		Dir: true,
-	}
-	err = w.Clean(cleanOpts)
+	})
 	CheckIfError(err)
 
 	// Print a message indicating that the reset and clean was successful.
